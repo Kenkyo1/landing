@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <link rel="stylesheet" type="text/css" href="style.css">
 
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -156,10 +157,10 @@
   <div class="search-popup">
     <div class="search-popup-container">
 
-      <form role="search" method="get" class="form-group" action="">
+      <form id="form-email" role="search" method="get" class="form-group" action="">
         <input type="search" id="search-form" class="form-control border-0 border-bottom"
           placeholder="Type and press enter" value="" name="s" />
-        <button type="submit" class="search-submit border-0 position-absolute bg-white"
+        <button id="bt-submit" type="submit" class="search-submit border-0 position-absolute bg-white"
           style="top: 15px;right: 15px;"><svg class="search" width="24" height="24">
             <use xlink:href="#search"></use>
           </svg></button>
@@ -1222,6 +1223,23 @@
             <button class="btn btn-dark btn-lg text-uppercase w-100">Sign Up</button>
           </form>
         </div>
+        <!-- Suscribers - START -->
+        <div class="col-md-4 py-5 my-5">
+          <h4 class="element-title text-capitalize my-3">Subscribers per Day</h4>
+          <table class="table table-hover table-light table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Day</th>
+                <th scope="col">Subscribers</th>
+              </tr>
+            </thead>
+            <tbody id="subscribers">
+         
+            </tbody>
+          </table>
+        </div>
+        <!-- Suscribers - END -->
       </div>
     </div>
   </section>
@@ -1421,6 +1439,7 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="js/script.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
