@@ -25,7 +25,7 @@ CSS STRUCTURE:
 body {
   --heading-font: "Marcellus", Roboto, sans-serif;
   --heading-font-weight: 400;
-  --heading-color: #111;
+  --heading-color: #7f4317;
   --heading-line-height: 1.24;
 
   --swiper-theme-color: #8C907E;
@@ -35,7 +35,7 @@ body {
   --bs-body-font-size: 18px;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #8f8f8f;
+  --bs-body-color: #4D4D4D;
   --bs-body-color-rgb: 143, 143, 143;
 
   --bs-primary: #8C907E;
@@ -53,7 +53,7 @@ body {
   --bs-dark-rgb: 33, 37, 41;
 
   --bs-link-color: #111;
-  --bs-link-color-rgb: 17, 17, 17;
+  --bs-link-color-rgb: 127, 67, 23;
   --bs-link-decoration: underline;
   --bs-link-hover-color: #111;
   --bs-link-hover-color-rgb: 17, 17, 17;
@@ -61,6 +61,10 @@ body {
 
 body {
   letter-spacing: 0.03rem;
+}
+
+.custom-section {
+  background-color: #F5D7B5;
 }
 
 .custom-billboard {
