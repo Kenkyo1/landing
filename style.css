@@ -49,7 +49,7 @@ body {
   --bs-primary-rgb: 140, 144, 126;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-black-rgb: 17, 17, 17;
-  --bs-light-rgb: 241, 241, 240;
+  --bs-light-rgb: 200, 130, 82;
   --bs-dark-rgb: 33, 37, 41;
 
   --bs-link-color: #111;
@@ -61,6 +61,10 @@ body {
 
 body {
   letter-spacing: 0.03rem;
+}
+
+.custom-billboard {
+  background-color: #F5D7B5;
 }
 
 h1,
