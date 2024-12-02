@@ -8,6 +8,12 @@ const databaseURL = 'https://landing-f3011-default-rtdb.firebaseio.com/coleccion
 let sendData = () => {
     //Obtener los datos del formulario
     const formData = new FormData(form);
+
+    const selectElement = document.getElementById("select-options");
+    const selectedText = selectElement.selectedOptions[0].text;
+
+    formData.append("selectedOptionText", selectedText);
+
     const data = Object.fromEntries(formData.entries()); //Convierte formData a objeto
 
     //new Date().toLocaleDateString( locales, options );
@@ -55,40 +61,38 @@ let getData = async () => {
         if (data != null) {
 
             // Cuente el número de suscriptores registrados por fecha a partir del objeto data
-            let countSuscribers = new Map()
+            let productPopular = new Map();
+
             if (Object.keys(data).length > 0) {
                 for (let key in data) {
 
-                    let { email, saved } = data[key]
+                    let { selectedOptionText } = data[key]
 
-                    let date = saved.split(",")[0]
-
-                    let count = countSuscribers.get(date) || 0; //el operador binario || permite hacer una especie de if para asignar un valor dependiendo de la respuesta
-                    countSuscribers.set(date, count + 1)
+                    productPopular.set(
+                        selectedOptionText,
+                        (productPopular.get(selectedOptionText) || 0) + 1
+                    );
                 }
             }
 
             // END
 
             // Genere y agregue filas de una tabla HTML para mostrar fechas y cantidades de suscriptores almacenadas 
-            if (countSuscribers.size > 0) {
-
-                subscribers.innerHTML = ''
+            if (productPopular.size > 0) {
+                subscribers.innerHTML = ''; // Limpiar contenido previo
 
                 let index = 1;
-                for (let [date, count] of countSuscribers) {
+                for (let [product, votes] of productPopular) {
                     let rowTemplate = `
                     <tr>
                         <th>${index}</th>
-                        <td>${date}</td>
-                        <td>${count}</td>
-                    </tr>`
-
-                    subscribers.innerHTML += rowTemplate
+                        <td>${product}</td>
+                        <td>${votes}</td>
+                    </tr>`;
+                    subscribers.innerHTML += rowTemplate;
                     index++;
                 }
             }
-
             // END
 
         }
@@ -110,6 +114,9 @@ let loaded = () => {
         let emailElement = document.querySelector('.form-control-lg');
         let emailText = emailElement.value;
 
+        let selectElement = document.getElementById('select-options');
+        let selectValue = selectElement.value;
+
         if (emailText.length === 0) {
             emailElement.focus();
             emailElement.animate(
@@ -123,7 +130,22 @@ let loaded = () => {
                     duration: 400,
                     easing: "linear",
                 }
-            )
+            );
+
+            if (selectValue === "0") {
+                selectElement.animate(
+                    [
+                        { transform: "translateX(0)" },
+                        { transform: "translateX(50px)" },
+                        { transform: "translateX(-50px)" },
+                        { transform: "translateX(0)" }
+                    ],
+                    {
+                        duration: 400,
+                        easing: "linear",
+                    }
+                );
+            }
 
             return;
         }
